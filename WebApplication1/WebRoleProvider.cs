@@ -39,12 +39,11 @@ namespace WebApplication1
         {
             using (var context = new OfficeEntities1())
             {
-                //var result = (from user in context.Users
-                //              join role in context.UserRole on user.Id equals role.UserId
-                //              where user.UserName == username
-                //              select role.Role).ToArray();
-                //return result;'
-                return null;
+                var result = (from user in context.Users
+                              join role in context.UserRoles on user.Id equals role.UserId
+                              where user.UserName == username
+                              select role.Role).ToArray();
+                return result;
             }
         }
         public override string[] GetUsersInRole(string roleName)
